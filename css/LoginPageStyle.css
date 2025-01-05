@@ -1,0 +1,127 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.welcome {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.O1-logo {
+  width: 50px;
+  height: 50px;
+  display: inline-block; /* Add this to align with text */
+  vertical-align: middle; /* Add this to align vertically with text */
+}
+
+body{
+  min-height: 100vh;
+  width: 100%;
+  background: #009579;
+}
+
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 430px;
+  max-height: 480px; /* added */
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  display: block;
+}
+
+.container .form{
+  padding: 2rem;
+}
+
+.form header{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form input{
+  height: 60px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 17px;
+  margin-bottom: 1.3rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+ 
+.form input:focus{
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.form input.button{
+  color: #fff;
+  background: #4CAF50; 
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.form input.button:hover{
+  background: #006653;
+}
+
+h1, h2, h3 {
+  top: 50%;
+  left: 50%;
+  text-align: center;
+
+}
+
+span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.signout-button {
+  color: #fff;
+  background: #4CAF50;
+  font-size: 1.2vw;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 1vh 1.8vw; 
+  border-radius: 5px; /* Rounded corners */
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  display: none;
+ }
+
+.signout-button:hover {
+  background-color: #45a049; /* Darker green color on hover */
+  color: #ff0000;
+  font-weight: bold;
+}
+
+#showUserInfo {
+  text-align: center;
+}
+
+/* 
+footer {
+  color: black;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  position:fixed;
+}
+ */

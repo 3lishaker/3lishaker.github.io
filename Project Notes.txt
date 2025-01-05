@@ -1,0 +1,131 @@
+GraphQL		=> query language
+
+A layer between frontEnd & backEnd
+[Clinet] <-> GraphQL <-> [Server]
+============================================================================
+schema {
+	query: Query
+	mutaion: Mutation
+}
+
+type Query {...}	==> Used to read data from API
+type Mutation {...}	==> Used to create, update or delete data from API
+
+
+type ... {
+	FIELD TYPE
+	FIELD TYPE
+	FIELD TYPE
+}
+============================================================================
+! : means this is a required field
+
+schema {
+	query: Query
+	mutaion: Mutation
+}
+
+type Query {
+	getAllUsers: [User]!	=> Return type is a list of User
+	getUser(id: ID!)		=> Get a specific user by userID
+}
+
+type Mutation {
+	createUser(input: CreateUserInput): User
+	updateUser(input: UpdateUserInput): User
+	deleteUser(input: DeleteUserInput): User
+}
+
+type User {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	job: Job
+}
+
+type Job {
+	id: ID!
+	company: String!
+	position: String!
+	salary: int!
+}
+
+input CreateUserInput {
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	job: Job!
+}
+
+input UpdateUserInput {
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	job: Job!
+}
+
+input DeleteUserInput {
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	job: Job!
+}
+------------------------------------------
+Stored info in the DB/Server...
+
+{
+	data: [
+	{
+		id: 1,
+		firstName: "Ali",
+		lastName: "Meshaimea",
+		age: 20,
+		job: {
+			id: 1,
+			company: "BTC",
+			position: "CTO",
+			salary: 20
+		}
+	}
+ ]
+}
+-------------------------------------------------------------------------------------------------------
+Ref: https://www.youtube.com/watch?v=q6MxsS2iPnw&list=PL4cUxeGkcC9gUxtblNUahcsg0WLxmrK_y&index=3
+https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUxtblNUahcsg0WLxmrK_y
+
+1)  Get Started with Apollo Server 
+
+mkdir graphql-server-example
+cd graphql-server-example
+
+Initialize a new Node.js project: 
+npm init --yes && npm pkg set type="module"
+
+Install dependencies: 
+npm install @apollo/server graphql
+npm install apollo-server
+
+Set up with JavaScript
+touch index.js
+-------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=OP8ZvRiUbc4&list=PLpPqplz6dKxXICtNgHY1tiCPau_AwWAJU&index=3
+
+
+Initialize a new Node.js project:
+npm init
+
+Install apollo server: 
+npm install apollo-server graphql
+
+
+npm install nodemon
+	+ add in package.json
+    "start": "nodemon index.js"
+

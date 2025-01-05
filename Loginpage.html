@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Zone 01</title>
+        <link rel="stylesheet" type="text/css" href="css/LoginPageStyle.css" />
+        <link rel="icon" href="./img/titleLogo.ico" />
+    </head>
+
+    <body>
+        <div id="welcome" class="title welcome">Welcome to reboot<img src="./img/01Logo.png" class="O1-logo"/></div>
+
+        <div class="container">
+            <div class="login form">
+                <header>Login</header>
+
+                <form>  
+                    <input id="email" name="email" type="email" placeholder="Email or Username" />
+                    <input id="password" name="password" type="password" placeholder="Password" />
+                    <input type="submit" class="button" value="SIGN IN" />
+                </form>
+            </div>
+        </div>
+        
+        <div id="showUserInfo">
+        </div>
+
+        <button onclick="logOut();" class="signout-button">SIGN OUT</button>
+
+        <!-- <footer>Created by Ali's Group ©</footer> -->
+
+        <!-- Link All JS codes -->
+        <script src="mainCode.js"></script>
+        <script src="getToeken.js"></script>
+        <script src="getData.js"></script>
+        <script src="showData.js"></script>
+        <script src="JSCharts/BarChart.js"></script>
+        <script src="JSCharts/LineChart.js"></script>
+        <script src="JSCharts/PieChart.js"></script>
+        <script src="JSCharts/PiscineBarChart.js"></script>
+    </body>
+</html>
