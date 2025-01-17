@@ -32,6 +32,18 @@ function logOut() {
     document.querySelector('.container').style.display = 'block'; // Show login form (container)
     document.querySelector('.signout-button').style.display = 'none'; // Hide SIGN OUT button
 
+    // Clear the values
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+
     console.log("LOG OUT...")
 }
+
+// When user refresh the page
+window.onload = function () {
+
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+};
+
 
