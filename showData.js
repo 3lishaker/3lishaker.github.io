@@ -4,6 +4,7 @@ function showUserData(data) {
 
     document.querySelector('.container').style.display = 'none'; // Hide login form (container)
     document.querySelector('.signout-button').style.display = 'block'; // Show SIGN OUT button
+    contentDiv.style.display = 'block'; // Explicitly show the user info div
     contentDiv.innerHTML = ""; //Clear user details
 
     let userDetails = data.user[0]; // Store all user details

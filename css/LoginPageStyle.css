@@ -2,25 +2,62 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --success-color: #4cc9f0;
+  --danger-color: #f72585;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --transition: all 0.3s ease-in-out;
 }
 
 .welcome {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   text-align: center;
+  margin-top: 2rem;
+  color: var(--light-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .O1-logo {
-  width: 50px;
-  height: 50px;
-  display: inline-block; /* Add this to align with text */
-  vertical-align: middle; /* Add this to align vertically with text */
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  transition: var(--transition);
+}
+
+.O1-logo:hover {
+  transform: scale(1.1) rotate(5deg);
 }
 
 body{
   min-height: 100vh;
   width: 100%;
-  background: #009579;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark-color);
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .container{
@@ -28,92 +65,196 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  max-width: 430px;
-  max-height: 480px; /* added */
+  max-width: 450px;
   width: 100%;
-  background: #fff;
-  border-radius: 7px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  background: var(--light-color);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   display: block;
+  overflow: hidden;
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translate(-50%, -40%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 .container .form{
-  padding: 2rem;
+  padding: 2.5rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  margin-bottom: 0;
+  transition: var(--transition);
+}
+
+.input-group input:focus {
+  transform: translateY(-2px);
 }
 
 .form header{
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.form header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 10px;
 }
 
 .form input{
   height: 60px;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 20px;
   font-size: 17px;
-  margin-bottom: 1.3rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   outline: none;
+  transition: var(--transition);
+  background-color: #f9f9f9;
 }
  
 .form input:focus{
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(67, 97, 238, 0.15);
+  background-color: white;
 }
 
 .form input.button{
   color: #fff;
-  background: #4CAF50; 
+  background: var(--primary-color);
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-top: 1.7rem;
+  margin-top: 2rem;
   cursor: pointer;
-  transition: 0.4s;
+  transition: var(--transition);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .form input.button:hover{
-  background: #006653;
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.form input.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 h1, h2, h3 {
-  top: 50%;
-  left: 50%;
   text-align: center;
-
+  margin: 0.8rem 0;
+  color: var(--light-color);
 }
 
 span {
   font-weight: bold;
-  color: #fff;
+  color: var(--success-color);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .signout-button {
   color: #fff;
-  background: #4CAF50;
-  font-size: 1.2vw;
+  background: var(--danger-color);
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 1px;
-  padding: 1vh 1.8vw; 
-  border-radius: 5px; /* Rounded corners */
+  padding: 0.8rem 1.5rem; 
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   position: absolute;
   top: 2vh;
   right: 2vw;
   display: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
  }
 
 .signout-button:hover {
-  background-color: #45a049; /* Darker green color on hover */
-  color: #ff0000;
-  font-weight: bold;
+  background-color: #e5126f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+.signout-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Hide showUserInfo div on login page by default */
 #showUserInfo {
+  display: none; /* Hide by default on login page */
   text-align: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  overflow: auto;
+  max-height: 80vh;
+}
+#showUserInfo h2, #showUserInfo h3, #showUserInfo h4 {
+  margin-bottom: 1rem;
+  color: var(--light-color);
+}
+
+#showUserInfo details {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+#showUserInfo details:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+#showUserInfo details summary {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition);
+}
+
+#showUserInfo details summary:hover {
+  background-color: var(--secondary-color);
+}
+
+#showUserInfo details svg {
+  margin: 1rem auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 

@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () { // Wait for full pag
 function logOut() {
 
     contentDiv.innerHTML = ""; //Clear user details
+    contentDiv.style.display = 'none'; // Hide user info div
     document.querySelector('.container').style.display = 'block'; // Show login form (container)
     document.querySelector('.signout-button').style.display = 'none'; // Hide SIGN OUT button
 
@@ -45,5 +46,3 @@ window.onload = function () {
     document.getElementById('email').value = '';
     document.getElementById('password').value = '';
 };
-
-
