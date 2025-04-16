@@ -1,22 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () { // Wait for full page to be loaded
 
+    const token = localStorage.getItem('rebootToken');      // Check if token exists when the page loads
+    
+    if (token) {    // If token exists, skip login form and show user content
+        
+        document.querySelector('.container').style.display = 'none'; // Hide login form
+        document.querySelector('.signout-button').style.display = 'block'; // Show sign-out button
+        getDataFromReboot(token); // Fetch data using the token
+
+    } else {    // If no token, show login form
+        document.querySelector('.container').style.display = 'block'; // Show login form
+        document.querySelector('.signout-button').style.display = 'none'; // Hide sign-out button
+    }
+
+    // Add event listener for login button click
     document.querySelector('.button').addEventListener('click', event => { // Add a Listener for the form login button
         event.preventDefault(); // Prevent the form from being submitted in the default way
 
         var username = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 
-
         try {
 
-            getTokenFromReboot(username, password).then(newToken => { // Get Token from Reboot for this user
-                if (newToken != "" && !newToken.startsWith("error:")) {
-                    token = newToken;
-                    getDataFromReboot(token); // Get Data using the above Token
-                } else {
-                    alert(newToken);
-                }
-            });
+            
+            if (token) {    // If token exists, use it to get data
+                console.log('Token is available:', token);
+                getDataFromReboot(token); // Get Data using the above Token
+            } else {
+                console.log('Token is not available.');
+
+                getTokenFromReboot(username, password).then(newToken => { // Get Token from Reboot for this user
+                    if (newToken != "" && !newToken.startsWith("error:")) {
+                        
+                        localStorage.setItem('rebootToken', newToken);            // Store the token in localStorage
+                        const storedToken = localStorage.getItem('rebootToken');
+                        console.log('Stored Token:', storedToken);
+
+                        // Get data using the new token
+                        getDataFromReboot(newToken);
+                    } else {
+                        alert(newToken);
+                    }
+                });
+            }
 
         } catch (error) {
             console.log(error);
@@ -25,10 +51,9 @@ document.addEventListener('DOMContentLoaded', function () { // Wait for full pag
     });
 });
 
-
+// Sign-out function
 function logOut() {
-
-    contentDiv.innerHTML = ""; //Clear user details
+    contentDiv.innerHTML = ""; // Clear user details
     contentDiv.style.display = 'none'; // Hide user info div
     document.querySelector('.container').style.display = 'block'; // Show login form (container)
     document.querySelector('.signout-button').style.display = 'none'; // Hide SIGN OUT button
@@ -36,13 +61,8 @@ function logOut() {
     // Clear the values
     document.getElementById('email').value = '';
     document.getElementById('password').value = '';
+    localStorage.removeItem('rebootToken');
 
-    console.log("LOG OUT...")
+    console.log("LOG OUT...");
+    console.log("Values destroyed...");
 }
-
-// When user refresh the page
-window.onload = function () {
-
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-};

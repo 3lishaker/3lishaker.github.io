@@ -32,6 +32,9 @@ npm install
 
 # Start development server
 npm start
+
+# Use the public URL
+https://3lishaker.github.io/
 ```
 
 ## Author
